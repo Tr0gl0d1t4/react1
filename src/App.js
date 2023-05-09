@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Contacto from './Contacto';
+import ComponenteB from './ComponenteB';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contacto: {
+        nombre: 'Juan',
+        apellido: 'Tyson',
+        email: 'jTyson@example.com',
+        conectado: true,
+      },
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <Contacto
+          nombre={this.state.contacto.nombre}
+          apellido={this.state.contacto.apellido}
+          email={this.state.contacto.email}
+          conectado={this.state.contacto.conectado}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <ComponenteB contacto={this.state.contacto} />
+        </Contacto>
+      </div>
+    );
+  }
 }
 
 export default App;
